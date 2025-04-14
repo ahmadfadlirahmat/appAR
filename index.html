@@ -126,7 +126,7 @@
 
     <div class="container">
         <h1>Augmented Reality</h1>
-        <p class="sub-title">Klik gambar marker untuk melihat lebih jelas</p>
+        <p class="sub-title">Klik gambar untuk melihat lebih jelas</p>
 
         <div class="item">
             <img src="marker.jpg" alt="Marker Sepatu" onclick="showImage('marker.jpg')">
@@ -146,11 +146,13 @@
 
     </div>
 
-    <div class="overlay" id="imageOverlay">
-        <div style="color: white; font-family: 'Orbitron'; font-size: 18px; margin-bottom: 10px;">Masuk kehalaman ini
-            https
-            untuk memindai marker berikut:
-        </div>
+  <div style="color: white; font-family: 'Orbitron'; font-size: 18px; margin-bottom: 10px;">
+    Masuk ke halaman ini
+    <a href="https://web-ar-flame.vercel.app/" target="_blank" style="color: #00ffff; text-decoration: underline;">
+        https://web-ar-flame.vercel.app/
+    </a>
+    untuk memindai marker berikut:
+</div>
         <img id="fullImage" src="" alt="Marker">
         <button class="back-button" onclick="hideImage()">Kembali</button>
     </div>
