@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Augmented Reality</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #121212;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 20px #00ffe1aa;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            color: #00ffe1;
+            margin-bottom: 10px;
+        }
+
+        .sub-title {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .item img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            border: 2px solid #00ffe1;
+            border-radius: 10px;
+            margin-right: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #00ffe1;
+        }
+
+        .description {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #ccc;
+        }
+
+        .description strong {
+            color: #00ffe1;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 999;
+        }
+
+        .overlay img {
+            max-width: 90%;
+            max-height: 80%;
+            border: 4px solid #00ffe1;
+            border-radius: 12px;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            background: #00ffe1;
+            color: #000;
+            padding: 10px 25px;
+            border: none;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #00c7b3;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Augmented Reality</h1>
+        <p class="sub-title">Klik gambar marker untuk melihat lebih jelas</p>
+
+        <div class="item">
+            <img src="marker.jpg" alt="Marker Sepatu" onclick="showImage('marker.jpg')">
+            <p class="description">
+                <strong>Sepatu 3D:</strong> Pindai gambar ini untuk menampilkan model sepatu 3D. Ini adalah marker
+                khusus AR yang akan memunculkan sepatu virtual saat dipindai dengan kamera.
+            </p>
+        </div>
+
+        <div class="item">
+            <img src="qrar.png" alt="Marker Marjan" onclick="showImage('qrar.png')">
+            <p class="description">
+                <strong>Botol Marjan:</strong> Pindai QR ini untuk melihat botol sirup Marjan secara 3D. Marker ini
+                bekerja dengan AR engine untuk menampilkan model saat dikenali.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="overlay" id="imageOverlay">
+        <div style="color: white; font-family: 'Orbitron'; font-size: 18px; margin-bottom: 10px;">Masuk kehalaman ini
+            https
+            untuk memindai marker berikut:
+        </div>
+        <img id="fullImage" src="" alt="Marker">
+        <button class="back-button" onclick="hideImage()">Kembali</button>
+    </div>
+
+    <div class="copyright">
+        <p>&copy; 2025 Nopalaw.</p>
+    </div>
+
+    <script>
+        function showImage(imgName) {
+            document.getElementById('fullImage').src = imgName;
+            document.getElementById('imageOverlay').style.display = 'flex';
+        }
+
+        function hideImage() {
+            document.getElementById('imageOverlay').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>
