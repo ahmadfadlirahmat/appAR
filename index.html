@@ -191,7 +191,9 @@
 <body>
     <div class="container">
         <h1>Augmented Reality</h1>
-        <p class="sub-title">penjelasan website</p>
+        <p class="sub-title">
+            Website ini menampilkan teknologi Augmented Reality berbasis web (WebAR), yang memungkinkan Anda melihat objek 3D hanya dengan memindai gambar marker. Tidak perlu aplikasi tambahan — cukup buka kamera dari browser, scan marker-nya, dan objek virtual akan muncul secara langsung.
+        </p>
 
         <div class="item">
             <div class="item-image">
@@ -199,8 +201,7 @@
             </div>
             <div class="content-wrapper">
                 <p class="description">
-                    <strong>Sepatu 3D:</strong> Pindai gambar ini untuk menampilkan model sepatu 3D. Ini adalah marker
-                    khusus AR yang akan memunculkan sepatu virtual saat dipindai dengan kamera.
+                    <strong>Sepatu 3D:</strong> Pindai gambar ini untuk menampilkan model sepatu 3D. Ini adalah marker khusus AR yang akan memunculkan sepatu virtual saat dipindai dengan kamera.
                 </p>
                 <div class="item-buttons">
                     <a href="https://cam-ar.vercel.app/?marker=sepatu" target="_blank" class="button scan-button">
@@ -228,8 +229,7 @@
             </div>
             <div class="content-wrapper">
                 <p class="description">
-                    <strong>Botol Marjan:</strong> Pindai gambar ini untuk melihat botol sirup Marjan secara 3D. Marker ini
-                    bekerja dengan AR engine untuk menampilkan model saat dikenali.
+                    <strong>Botol Marjan:</strong> Pindai gambar ini untuk melihat botol sirup Marjan secara 3D. Marker ini bekerja dengan AR engine untuk menampilkan model saat dikenali.
                 </p>
                 <div class="item-buttons">
                     <a href="https://web-ar-flame.vercel.app/?marker=marjan" target="_blank" class="button scan-button">
@@ -275,15 +275,10 @@
 
     <script>
         function showImage(imgName, fileName) {
-            // Set image in overlay
             document.getElementById('fullImage').src = imgName;
-
-            // Set up download link
             const downloadLink = document.getElementById('downloadLink');
             downloadLink.href = imgName;
             downloadLink.setAttribute('download', fileName + '.png');
-
-            // Show overlay
             document.getElementById('imageOverlay').style.display = 'flex';
         }
 
@@ -294,3 +289,4 @@
 </body>
 
 </html>
+
