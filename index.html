@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -30,20 +31,13 @@
       position: relative;
     }
 
-    .logo-container {
+    .hexagon-border {
+      position: relative;
+      width: 100%;
+      height: 4px;
       background: linear-gradient(45deg, #FFCB05, #FF8200, #E63A22, #BE1E2D);
-      display: inline-block;
-      padding: 5px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .logo {
-      background: white;
-      padding: 15px;
-      border-radius: 6px;
-      display: inline-block;
-      color: #111;
+      margin: 30px 0;
+      border-radius: 2px;
     }
 
     h1 {
@@ -112,12 +106,6 @@
       font-weight: 600;
     }
 
-    .item-buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: auto;
-    }
-
     .overlay {
       position: fixed;
       top: 0;
@@ -166,12 +154,10 @@
       font-size: 13px;
     }
 
-    .scan-button {
-      background: linear-gradient(45deg, #FFCB05, #FF8200);
-    }
-
-    .scan-button:hover {
-      background: linear-gradient(45deg, #FF8200, #FFCB05);
+    .button:hover {
+      background: linear-gradient(45deg, #E63A22, #BE1E2D);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(230, 58, 34, 0.3);
     }
 
     .copyright {
@@ -180,25 +166,17 @@
       color: #aaa;
       margin-top: 20px;
     }
-
-    .hexagon-border {
-      position: relative;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(45deg, #FFCB05, #FF8200, #E63A22, #BE1E2D);
-      margin: 30px 0;
-      border-radius: 2px;
-    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="header">
-      <h1> Augmented Reality</h1> 
+      <h1>Augmented Reality</h1>
       <div class="hexagon-border"></div>
     </div>
     <p class="sub-title">
-      Website ini menampilkan teknologi Augmented Reality berbasis web (WebAR), yang memungkinkan Anda melihat objek 3D hanya dengan memindai gambar marker. Tidak perlu aplikasi tambahan — cukup buka kamera dari browser, scan marker-nya, dan objek virtual akan muncul secara langsung.
+      Website ini menampilkan teknologi Augmented Reality berbasis web (WebAR), yang memungkinkan Anda melihat objek 3D hanya dengan memindai gambar marker.
     </p>
 
     <div class="item">
@@ -209,23 +187,17 @@
         <p class="description">
           <strong>Sepatu 3D:</strong> Setelah Anda memindai gambar marker ini, sebuah model sepatu 3D akan langsung muncul di layar melalui kamera.
         </p>
-        <div class="item-buttons">
-          <a href="https://cam-ar.vercel.app/?marker=sepatu" target="_blank" class="button scan-button">Scan</a>
-        </div>
       </div>
     </div>
 
     <div class="item">
       <div class="item-image">
-        <img src="markersegitiga.jpg" alt="Marker Marjan" onclick="showImage('markersegitiga.jpg', 'glb')">
+        <img src="markersegitiga.jpg" alt="Marker Botol" onclick="showImage('markersegitiga.jpg', 'botol')">
       </div>
       <div class="content-wrapper">
         <p class="description">
-          <strong>animasi/3d:</strong> Setelah Anda memindai gambar marker ini, sebuah model botol marjan 3D akan langsung muncul di layar melalui kamera.
+          <strong>Botol Marjan:</strong> Setelah Anda memindai gambar marker ini, sebuah model botol 3D akan langsung muncul di layar melalui kamera.
         </p>
-        <div class="item-buttons">
-          <a href="https://web-ar-flame.vercel.app/?marker=marjan" target="_blank" class="button scan-button">Scan</a>
-        </div>
       </div>
     </div>
   </div>
@@ -233,15 +205,21 @@
   <div class="overlay" id="imageOverlay">
     <div class="overlay-message">Pindai gambar ini untuk melihat dalam bentuk 3D</div>
     <img id="fullImage" src="" alt="Marker">
+    <div style="margin-top: 20px; display: flex; gap: 12px;">
+      <a href="" id="downloadBtn" class="button" download>Download Marker</a>
+      <button class="button" onclick="hideImage()">Kembali</button>
+    </div>
   </div>
 
   <div class="copyright">
-    <p>&copy; 2025 Nopalaw | ---------</p>
+    <p>&copy; 2025 Nopalaw</p>
   </div>
 
   <script>
     function showImage(imgName, fileName) {
       document.getElementById('fullImage').src = imgName;
+      document.getElementById('downloadBtn').href = imgName;
+      document.getElementById('downloadBtn').setAttribute('download', fileName + '.png');
       document.getElementById('imageOverlay').style.display = 'flex';
     }
 
@@ -250,4 +228,5 @@
     }
   </script>
 </body>
+
 </html>
