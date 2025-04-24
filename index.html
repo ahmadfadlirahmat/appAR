@@ -160,6 +160,136 @@
       box-shadow: 0 4px 8px rgba(230, 58, 34, 0.3);
     }
 
+    .button-container {
+      display: flex;
+      gap: 8px;
+    }
+
+    .scan-button {
+      background: linear-gradient(45deg, #2FBDA7, #1B7A6B);
+      color: white;
+      padding: 6px 12px;
+      border: none;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 12px;
+    }
+
+    .scan-button:hover {
+      background: linear-gradient(45deg, #1B7A6B, #125C50);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(27, 122, 107, 0.3);
+    }
+
+    .help-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #6C63FF, #4A45B2);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(108, 99, 255, 0.4);
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+
+    .help-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(108, 99, 255, 0.6);
+    }
+
+    .help-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .help-content {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+      border: 1px solid rgba(108, 99, 255, 0.3);
+    }
+
+    .help-title {
+      color: #6C63FF;
+      font-size: 22px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .steps-container {
+      margin-bottom: 20px;
+    }
+
+    .step {
+      display: flex;
+      margin-bottom: 15px;
+    }
+
+    .step-number {
+      background: #6C63FF;
+      color: white;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 14px;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      color: #f0f0f0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .close-help {
+      margin-top: 20px;
+      background: linear-gradient(45deg, #6C63FF, #4A45B2);
+      border: none;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .close-help:hover {
+      background: linear-gradient(45deg, #4A45B2, #36339B);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(108, 99, 255, 0.4);
+    }
+
     .copyright {
       text-align: center;
       font-size: 12px;
@@ -185,8 +315,12 @@
       </div>
       <div class="content-wrapper">
         <p class="description">
-          <strong>botol marjan 3D:</strong> Setelah Anda memindai gambar marker ini, sebuah model botol marjan 3D akan langsung muncul di layar melalui kamera.
+          <strong>Botol Marjan 3D:</strong> Setelah Anda memindai gambar marker ini, sebuah model botol marjan 3D akan langsung muncul di layar melalui kamera.
         </p>
+        <div class="button-container">
+          <button class="scan-button" onclick="startScan('marjanaslmbr.png')">Scan Sekarang</button>
+          <button class="button" onclick="showImage('marjanaslmbr.png', 'botol marjan')">Lihat Marker</button>
+        </div>
       </div>
     </div>
 
@@ -196,8 +330,42 @@
       </div>
       <div class="content-wrapper">
         <p class="description">
-          <strong>sepatu:</strong> Setelah Anda memindai gambar marker ini, sebuah model sepatu 3D akan langsung muncul di layar melalui kamera.
+          <strong>Sepatu:</strong> Setelah Anda memindai gambar marker ini, sebuah model sepatu 3D akan langsung muncul di layar melalui kamera.
         </p>
+        <div class="button-container">
+          <button class="scan-button" onclick="startScan('sepatu.png')">Scan Sekarang</button>
+          <button class="button" onclick="showImage('sepatu.png', 'sepatu')">Lihat Marker</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-image">
+        <img src="/api/placeholder/80/80" alt="Marker smartphone" onclick="showImage('/api/placeholder/400/320', 'smartphone')">
+      </div>
+      <div class="content-wrapper">
+        <p class="description">
+          <strong>Smartphone 3D:</strong> Setelah Anda memindai gambar marker ini, sebuah model smartphone 3D akan langsung muncul di layar melalui kamera.
+        </p>
+        <div class="button-container">
+          <button class="scan-button" onclick="startScan('/api/placeholder/400/320')">Scan Sekarang</button>
+          <button class="button" onclick="showImage('/api/placeholder/400/320', 'smartphone')">Lihat Marker</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-image">
+        <img src="/api/placeholder/80/80" alt="Marker furnitur" onclick="showImage('/api/placeholder/400/320', 'furnitur')">
+      </div>
+      <div class="content-wrapper">
+        <p class="description">
+          <strong>Furnitur 3D:</strong> Setelah Anda memindai gambar marker ini, sebuah model furnitur 3D akan langsung muncul di layar melalui kamera.
+        </p>
+        <div class="button-container">
+          <button class="scan-button" onclick="startScan('/api/placeholder/400/320')">Scan Sekarang</button>
+          <button class="button" onclick="showImage('/api/placeholder/400/320', 'furnitur')">Lihat Marker</button>
+        </div>
       </div>
     </div>
   </div>
@@ -208,6 +376,61 @@
     <div style="margin-top: 20px; display: flex; gap: 12px;">
       <a href="" id="downloadBtn" class="button" download>Download Marker</a>
       <button class="button" onclick="hideImage()">Kembali</button>
+    </div>
+  </div>
+
+  <button class="help-button" onclick="showHelp()">?</button>
+
+  <div class="help-overlay" id="helpOverlay">
+    <div class="help-content">
+      <h2 class="help-title">Cara Menggunakan Web AR</h2>
+      <div class="steps-container">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Pilih Objek</strong> - Pilih salah satu objek 3D yang ingin Anda lihat dari galeri yang tersedia pada halaman utama.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Lihat Marker</strong> - Klik tombol "Lihat Marker" untuk menampilkan gambar marker yang akan Anda pindai. Anda juga bisa mengunduh marker ini dengan mengklik tombol "Download Marker".
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Siapkan Marker</strong> - Tampilkan marker di layar perangkat lain atau cetak marker tersebut untuk mendapatkan hasil terbaik.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Mulai Pemindaian</strong> - Klik tombol "Scan Sekarang" untuk mengaktifkan kamera di perangkat Anda. Website akan meminta izin untuk mengakses kamera, mohon izinkan.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <strong>Arahkan Kamera</strong> - Arahkan kamera perangkat Anda ke marker. Pastikan seluruh marker terlihat jelas di layar.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">6</div>
+          <div class="step-content">
+            <strong>Lihat Objek 3D</strong> - Ketika marker terdeteksi, objek 3D akan muncul di layar perangkat Anda, ditampilkan tepat di atas marker.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">7</div>
+          <div class="step-content">
+            <strong>Interaksi</strong> - Anda dapat melihat objek 3D dari berbagai sudut dengan menggerakkan perangkat atau marker. Beberapa objek mungkin memiliki animasi atau fitur interaktif tambahan.
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center;">
+        <button class="close-help" onclick="hideHelp()">Tutup</button>
+      </div>
     </div>
   </div>
 
@@ -225,6 +448,22 @@
 
     function hideImage() {
       document.getElementById('imageOverlay').style.display = 'none';
+    }
+
+    function startScan(imgName) {
+      // In a real implementation, this would activate the camera and start AR scanning
+      alert('Memulai pemindaian AR untuk marker. Mohon izinkan akses kamera jika diminta.');
+      // You would typically call your AR initialization code here
+      // For demonstration purposes, we'll just show the image overlay
+      showImage(imgName, 'scan');
+    }
+
+    function showHelp() {
+      document.getElementById('helpOverlay').style.display = 'flex';
+    }
+
+    function hideHelp() {
+      document.getElementById('helpOverlay').style.display = 'none';
     }
   </script>
 </body>
