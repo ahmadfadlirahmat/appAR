@@ -187,18 +187,18 @@
       box-shadow: 0 4px 8px rgba(27, 122, 107, 0.3);
     }
 
-    /* Fixed help button positioning */
+    /* Modified help button positioning to bottom of screen */
     .help-button {
       position: fixed;
-      top: 20px;
+      bottom: 20px;
       right: 20px;
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       background: linear-gradient(45deg, #6C63FF, #4A45B2);
       color: white;
       border: none;
       border-radius: 50%;
-      font-size: 20px;
+      font-size: 24px;
       font-weight: bold;
       cursor: pointer;
       display: flex;
@@ -301,6 +301,7 @@
       font-size: 12px;
       color: #aaa;
       margin-top: 20px;
+      margin-bottom: 70px; /* Added to prevent copyright from being hidden by help button */
     }
 
     /* Mobile responsiveness improvements */
@@ -339,6 +340,13 @@
       .help-content {
         padding: 20px;
         margin-top: 50px;
+      }
+      
+      /* Improved help button styling for mobile */
+      .help-button {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
       }
     }
   </style>
@@ -439,6 +447,7 @@
     </div>
   </div>
 
+  <!-- Help button moved to bottom of screen with improved styling -->
   <button class="help-button" onclick="showHelp()">?</button>
 
   <div class="help-overlay" id="helpOverlay">
