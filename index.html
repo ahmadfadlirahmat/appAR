@@ -29,6 +29,9 @@
       text-align: center;
       margin-bottom: 20px;
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .hexagon-border {
@@ -184,17 +187,18 @@
       box-shadow: 0 4px 8px rgba(27, 122, 107, 0.3);
     }
 
+    /* Fixed help button positioning */
     .help-button {
       position: fixed;
-      bottom: 20px;
+      top: 20px;
       right: 20px;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       background: linear-gradient(45deg, #6C63FF, #4A45B2);
       color: white;
       border: none;
       border-radius: 50%;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: bold;
       cursor: pointer;
       display: flex;
@@ -234,6 +238,7 @@
       width: 90%;
       box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
       border: 1px solid rgba(108, 99, 255, 0.3);
+      margin-top: 60px; /* Added to ensure content doesn't get hidden under status bar */
     }
 
     .help-title {
@@ -297,6 +302,45 @@
       color: #aaa;
       margin-top: 20px;
     }
+
+    /* Mobile responsiveness improvements */
+    @media screen and (max-width: 600px) {
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
+      
+      .item {
+        flex-direction: column;
+      }
+      
+      .item-image {
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .item img {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .content-wrapper {
+        margin-left: 0;
+      }
+      
+      .button-container {
+        flex-direction: row;
+        justify-content: center;
+      }
+      
+      .help-content {
+        padding: 20px;
+        margin-top: 50px;
+      }
+    }
   </style>
 </head>
 
@@ -304,8 +348,8 @@
   <div class="container">
     <div class="header">
       <h1>Augmented Reality</h1>
-      <div class="hexagon-border"></div>
     </div>
+    <div class="hexagon-border"></div>
     <p class="sub-title">
       Website ini menampilkan teknologi Augmented Reality berbasis web (WebAR), yang memungkinkan Anda melihat objek 3D hanya dengan memindai gambar marker.
     </p>
@@ -334,7 +378,7 @@
           <strong>Sepatu:</strong> Setelah Anda memindai gambar marker ini, sebuah model sepatu 3D akan langsung muncul di layar melalui kamera.
         </p>
         <div class="button-container">
-          <a href="#" class="scan-button" onclick="openARLink('sepatu.png')">Scan Sekarang</a>
+          <a href="https://mywebar.com/p/Shoe_Project_s8r2gfi6t" target="_blank" class="scan-button">Scan Sekarang</a>
           <button class="button" onclick="showImage('sepatu.png', 'sepatu')">Lihat Marker</button>
         </div>
       </div>
@@ -466,12 +510,14 @@
       document.getElementById('imageOverlay').style.display = 'none';
     }
 
-    function startScan(imgName) {
-      // In a real implementation, this would activate the camera and start AR scanning
-      alert('Memulai pemindaian AR untuk marker. Mohon izinkan akses kamera jika diminta.');
-      // You would typically call your AR initialization code here
-      // For demonstration purposes, we'll just show the image overlay
-      showImage(imgName, 'scan');
+    function openARLink(imgName) {
+      // For the shoe example that was using an undefined function
+      if (imgName === 'sepatu.png') {
+        window.open('https://mywebar.com/p/Shoe_Project_s8r2gfi6t', '_blank');
+      } else {
+        alert('Memulai pemindaian AR untuk marker. Mohon izinkan akses kamera jika diminta.');
+        showImage(imgName, 'scan');
+      }
     }
 
     function showHelp() {
